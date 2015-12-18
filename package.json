@@ -1,0 +1,24 @@
+{
+  "name": "respond-with",
+  "version": "1.0.0",
+  "description": "Respond with promise helpers for express",
+  "main": "respondWith.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcasimir/respond-with.git"
+  },
+  "keywords": [
+    "express",
+    "responder",
+    "respond-with"
+  ],
+  "author": "mcasimir (https://github.com/mcasimir)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcasimir/respond-with/issues"
+  },
+  "homepage": "https://github.com/mcasimir/respond-with#readme"
+}
