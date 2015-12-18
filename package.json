@@ -20,5 +20,22 @@
   "bugs": {
     "url": "https://github.com/mcasimir/respond-with/issues"
   },
-  "homepage": "https://github.com/mcasimir/respond-with#readme"
+  "homepage": "https://github.com/mcasimir/respond-with#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-depcheck": "^1.1.0",
+    "gulp-help": "^1.6.1",
+    "gulp-jasmine": "^2.2.1",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-release-tasks": "0.0.3",
+    "gulp-sequence": "^0.4.1",
+    "jasmine-spec-reporter": "^2.4.0",
+    "jshint": "^2.8.0",
+    "lodash": "^3.10.1",
+    "require-all": "^2.0.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
 }
