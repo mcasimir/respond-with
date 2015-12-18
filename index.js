@@ -33,9 +33,7 @@ if (!global.__respond__with__singleton) {
       {
         status: 'rejected',
         respond: function(req, res, err){
-          return res.status(500).json({
-            error: err.message
-          });
+          return res.status(500).json(err);
         }
       }
     ]
@@ -56,25 +54,35 @@ if (!global.__respond__with__singleton) {
 
     promise
     .then(function(object) {
-      var responder = _.find(config.responders, function(responder){
-        return (responder.status === 'resolved' && (responder.when === undefined || responder.when(req, res, object)));
-      });
+      try {
+        var responder = _.find(config.responders, function(responder){
+          return (responder.status === 'resolved' && (responder.when === undefined || responder.when(req, res, object)));
+        });
 
-      responder.respond(req, res, object);
+        responder.respond(req, res, object);
 
-      return object;
+        return object;
 
+      } catch (e) {
+        res.status(500).json(config.formatError(e));
+        return Promise.reject(e);
+      }
     })
     .catch(function(error){
-      error = config.formatError(error);
+      try {
+        error = config.formatError(error);
 
-      var responder = _.find(config.responders, function(responder){
-        return (responder.status === 'rejected' && (responder.when === undefined || responder.when(req, res, error)));
-      });
+        var responder = _.find(config.responders, function(responder){
+          return (responder.status === 'rejected' && (responder.when === undefined || responder.when(req, res, error)));
+        });
 
-      responder.respond(req, res, error);
+        responder.respond(req, res, error);
 
-      return Promise.reject(error);
+        return Promise.reject(error);
+      } catch (e) {
+        res.status(500).json(config.formatError(e));
+        return Promise.reject(e);
+      }
     });
   };
 
