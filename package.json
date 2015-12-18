@@ -2,7 +2,7 @@
   "name": "respond-with",
   "version": "1.0.0",
   "description": "Respond with promise helpers for express",
-  "main": "respondWith.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
