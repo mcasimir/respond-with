@@ -64,10 +64,6 @@ if (!global.__respond__with__singleton) {
 
     })
     .catch(function(error){
-      if (typeof error === 'string') {
-        error = new Error(error);
-      }
-
       error = config.formatError(error);
 
       var responder = _.find(config.responders, function(responder){
