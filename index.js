@@ -5,16 +5,18 @@ var _ = require('lodash');
 if (!global.__respond__with__singleton) {
 
   var config = {
+    keepStack: false,
     formatError: function(error){
       return {
         type: error && error.constructor && error.constructor.name || 'Error',
-        error: error && (error.message ? error.message : error) || 'Unknown Error'
+        error: error && (error.message ? error.message : error) || 'Unknown Error',
+        stack: this.keepStack ? error.stack : undefined
       };
     },
     responders: [
       {
         status: 'resolved',
-        when: function(req, object){
+        when: function(req, res, object){
           return req.method === 'GET' && (object === null || object === undefined);
         },
         respond: function(req, res){
