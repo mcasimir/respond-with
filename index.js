@@ -7,7 +7,8 @@ if (!global.__respond__with__singleton) {
   var config = {
     formatError: function(error){
       return {
-        error: error.message ? error.message : error
+        type: error && error.constructor && error.constructor.name || 'Error',
+        error: error && (error.message ? error.message : error) || 'Unknown Error'
       };
     },
     responders: [
