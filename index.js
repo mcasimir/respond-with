@@ -17,20 +17,20 @@ if (!global.__respond__with__singleton) {
         when: function(req, object){
           return req.method === 'GET' && (object === null || object === undefined);
         },
-        respondWith: function(req, res){
+        respond: function(req, res){
           return res.status(404).json();
         }
       },
       {
         status: 'resolved',
         name: 'Json',
-        respondWith: function(req, res, object){
+        respond: function(req, res, object){
           return res.status(200).json(object);
         }
       },
       {
         status: 'rejected',
-        respondWith: function(req, res, err){
+        respond: function(req, res, err){
           return res.status(500).json({
             error: err.message
           });
